@@ -6,7 +6,7 @@ import Button from './Button'
 
 export default {
     //title is mandatory and should be unique
-    title: 'Button',
+    title: 'Form/Button',
     component: Button
 }
 
