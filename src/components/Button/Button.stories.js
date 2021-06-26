@@ -1,18 +1,22 @@
 import React from 'react'
 import Button from './Button'
+import Center from '../DecoratorCenter/Center'
 
 //Write story for button in component story format
 //this format has a default export and one or more named exports
+
+//Possible to apply args in component level which will be applied to all the stories.
+//However args at story level > args from comp level
 
 export default {
     //title is mandatory and should be unique
     title: 'Form/Button',
     component: Button,
-    args: {
-        children: 'Args from Comp Level'
-    }
-    //Possible to apply args in component level which will be applied to all the stories.
-    //However args at story level > args from comp level
+    decorators: [story => <Center> {story()} </Center>] //global decorators on preview.js
+    // args: {
+    //     children: 'Args from Comp Level'
+    // }
+    
 }
 
 //every named exports represents a story
@@ -24,6 +28,10 @@ export const Primary = () => <Button variant='primary'>ChildA</Button>
 export const Secondary = () => <Button variant='secondary'>ChildB</Button>
 export const Success = () => <Button variant='success'>ChildC</Button>
 export const Danger = () => <Button variant='danger'>ChildD</Button>
+
+
+/*
+Commenting out Args Mechanism
 
 //Args Mechanism:
 //1. Make a template out of our component
@@ -43,12 +51,11 @@ SecondaryA.args = {
     variant: 'secondary',
     // children: 'Secondary Args'
 }
-/*
-*   Args approach reduces the unique code we need to write
-*   For complex components with lot more JSX, defining the args object is 
-        much better than duplicating JSX
-*   It is possible to reuse args from another story
-*/
+
+// Args approach reduces the unique code we need to write
+// For complex components with lot more JSX, defining the args object is much better than duplicating JSX
+// It is possible to reuse args from another story
+
 
 export const LongPrimaryA = Template.bind({})
 LongPrimaryA.args = {
@@ -56,9 +63,8 @@ LongPrimaryA.args = {
     // children: 'Long Primary Args'
 }
 
-/*
-* Like this we can extend the props from other stories.
-* We can see code reduce if a component has more (5 or 10 or.. ) props 
-    & we can simply reuse the args from another story
-* 
+
+// Like this we can extend the props from other stories.
+// We can see code reduce if a component has more (5 or 10 or.. ) props & we can simply reuse the args from another story
+
 */

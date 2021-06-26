@@ -9,8 +9,6 @@ export default {
 export const PrimarySubscription = () => 
     <>
         <Primary />
-        <br />
-        <br />
         <Large />
     </>
 
